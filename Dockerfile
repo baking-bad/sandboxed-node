@@ -4,8 +4,8 @@ RUN wget "https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-para
   && export OSTYPE=linux \
   && sed '/SAPLING_SPROUT_GROTH16_NAME/d; /progress/d; /retry-connrefused/d' fetch-params.sh | sh \
   && rm fetch-params.sh
-ARG TAG
-RUN wget "https://github.com/serokell/tezos-packaging/releases/download/$TAG/tezos-node" \
+ARG DOCKER_TAG
+RUN wget "https://github.com/serokell/tezos-packaging/releases/download/$DOCKER_TAG/tezos-node" \
   && chmod +x tezos-node \
   && ./tezos-node config init \
     --data-dir /tezos/sandbox \
