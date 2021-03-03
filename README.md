@@ -1,1 +1,1 @@
-# tezos-node
+# Tezos sandboxed node
