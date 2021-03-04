@@ -64,7 +64,8 @@ In JSON form they look (at least for Edo) like the following:
 In order to get bytes, prepend 4 byte prefix and then encode using BSON.
 
 ### Preapply a block header with protocol constants
-Fitness is set to 1 (at the genesis).
+Fitness is set to 1 (at the genesis).  
+For signing use "edsk31vznjHSSpGExDMHYASz45VZqXN4DPxvsa4hAyY8dHM28cZzp6" private key aka "activator" or "dictator".
 
 ```
 POST http://localhost:8732/chains/main/blocks/genesis/helpers/preapply/block?timestamp=1614845848
