@@ -10,10 +10,10 @@ RUN wget "https://github.com/serokell/tezos-packaging/releases/download/$TAG/tez
   && ./tezos-node config init \
     --data-dir /tezos/sandbox \
     --network sandbox \
-    --expected-pow 0 \
+    --expected-pow 0.0 \
     --connections 0 \
     --rpc-addr 0.0.0.0:8732 \
-  && ./tezos-node identity generate "0" \
+  && ./tezos-node identity generate "0.0" \
     --data-dir /tezos/sandbox \
   && echo "{ \"genesis_pubkey\": \"edpkuSLWfVU1Vq7Jg9FucPyKmma6otcMHac9zG4oU1KMHSTBpJuGQ2\" }" > /tezos/sandbox/sandbox.json
 ENTRYPOINT ["/tezos/tezos-node", "run", \
