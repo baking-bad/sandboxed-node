@@ -1,4 +1,4 @@
-TAG=falphanet-release
+TAG=v9.0-rc1-1
 
 build:
 	docker build -t bakingbad/sandboxed-node:$(TAG) --build-arg TAG=$(TAG) .
