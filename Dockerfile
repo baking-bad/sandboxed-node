@@ -6,16 +6,9 @@ RUN wget "https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-para
   && rm fetch-params.sh
 ARG TAG
 RUN wget "https://github.com/serokell/tezos-packaging/releases/download/$TAG/tezos-node" \
-  && chmod +x tezos-node \
-  && ./tezos-node config init \
-    --data-dir /tezos/sandbox \
-    --network sandbox \
-    --expected-pow 0.0 \
-    --connections 0 \
-    --rpc-addr 0.0.0.0:8732 \
-  && ./tezos-node identity generate "0.0" \
-    --data-dir /tezos/sandbox \
-  && echo "{ \"genesis_pubkey\": \"edpkuSLWfVU1Vq7Jg9FucPyKmma6otcMHac9zG4oU1KMHSTBpJuGQ2\" }" > /tezos/sandbox/sandbox.json
+  && chmod +x tezos-node
+RUN ./tezos-node identity generate "0.0" --data-dir /tezos/sandbox
+COPY ./*.json /tezos/sandbox/
 ENTRYPOINT ["/tezos/tezos-node", "run", \
     "-vv", \
     "--data-dir=/tezos/sandbox", \

@@ -1,0 +1,20 @@
+{ "data-dir": "/tezos/sandbox",
+    "rpc": { "listen-addrs": [ "0.0.0.0:8732" ] },
+    "p2p":
+      { "expected-proof-of-work": 0, "bootstrap-peers": [],
+        "listen-addr": "[::]:9732",
+        "limits":
+          { "connection-timeout": 10, "min-connections": 0,
+            "expected-connections": 0, "max-connections": 0,
+            "max_known_points": [ 0, 0 ], "max_known_peer_ids": [ 0, 0 ] } },
+    "shell": { "chain_validator": { "synchronisation_threshold": 2 } },
+    "network": {
+        "genesis": {
+            "timestamp": "1970-01-01T00:00:00Z",
+            "block": "BLockGenesisGenesisGenesisGenesisGenesis53fc8eucdT3",
+            "protocol": "PtYuensgYBb3G3x1hLLbCmcav8ue8Kyd2khADcL5LsT5R1hcXex"
+          },
+          "chain_name": "TEZOS_SANDBOX_1970-01-01T00:00:00Z",
+          "sandboxed_chain_name": "SANDBOXED_TEZOS",
+          "default_bootstrap_peers": [ ]
+    } }
