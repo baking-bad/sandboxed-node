@@ -1,4 +1,4 @@
-TAG=v9.4-1
+TAG=v10.3-1
 
 build:
 	docker build -t bakingbad/sandboxed-node:$(TAG) --build-arg TAG=$(TAG) .
