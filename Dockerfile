@@ -13,4 +13,5 @@ ENTRYPOINT ["/tezos/tezos-node", "run", \
     "-vv", \
     "--data-dir=/tezos/sandbox", \
     "--synchronisation-threshold=0", \
-    "--sandbox=/tezos/sandbox/sandbox.json"]
+    "--sandbox=/tezos/sandbox/sandbox.json", \
+    "--allow-all-rpc=0.0.0.0"]
