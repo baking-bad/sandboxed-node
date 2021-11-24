@@ -1,4 +1,4 @@
-TAG=auto-release
+TAG=v11.0-1
 
 build:
 	docker build -t bakingbad/sandboxed-node:$(TAG) --build-arg TAG=$(TAG) .
