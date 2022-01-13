@@ -1,2 +1,2 @@
 #!/bin/bash -xe
-docker build --build-arg TAG=$DOCKER_TAG -t $IMAGE_NAME .
+docker buildx build --platform linux/arm64,linux/amd64 --build-arg TAG=$DOCKER_TAG -t $IMAGE_NAME .
