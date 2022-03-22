@@ -1,4 +1,4 @@
-name: Dockerhub
+name: Build
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - "v*"
 
 jobs:
-  push_to_registry:
-    name: Push Docker images to Docker Hub
+  build:
+    name: Docker images for Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
