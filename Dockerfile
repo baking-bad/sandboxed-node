@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.16
 WORKDIR /tezos
 RUN wget "https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh" \
   && export OSTYPE=linux \
