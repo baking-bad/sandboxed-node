@@ -1,0 +1,17 @@
+FROM ubuntu:22.04
+WORKDIR /tezos
+RUN apt update && apt install -y wget python3-pip libsodium-dev libsecp256k1-dev libgmp-dev
+RUN wget -nv "https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh" \
+    && export OSTYPE=linux \
+    && sed '/SAPLING_SPROUT_GROTH16_NAME/d; /progress/d; /retry-connrefused/d' fetch-params.sh | sh \
+    && rm fetch-params.sh
+ARG TARGETPLATFORM
+ARG TAG=v14.0-1
+RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then EXEC_NAME="tezos-node-arm64"; else EXEC_NAME="tezos-node"; fi \
+    && cd /usr/local/bin \
+    && wget -nv "https://github.com/serokell/tezos-packaging/releases/download/$TAG/$EXEC_NAME" -O "tezos-node" \
+    && chmod +x tezos-node
+RUN pip install pytest==7.1.2 pytezos==3.6.1 
+WORKDIR /app
+ENV SANDBOX_TYPE=PROCESS
+
