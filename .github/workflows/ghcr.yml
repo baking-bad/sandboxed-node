@@ -13,9 +13,10 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       DOCKER_REGISTRY: ghcr.io
       DOCKER_IMAGE_BASE: ${{ github.repository }}
+      TAG: v14.1-1
     steps:
-      - name: Set tag
-        run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      #- name: Set tag
+      #  run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Check out the repo
         uses: actions/checkout@v2
