@@ -2,9 +2,8 @@ name: Build
 
 on:
   push:
-    tags:
-      - '*'
-  workflow_dispatch:
+    #tags:
+    #  - '*'
 
 jobs:
   build:
