@@ -9,7 +9,7 @@ ARG TAG
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then EXEC_NAME="tezos-node-arm64"; else EXEC_NAME="tezos-node"; fi \
   && wget "https://github.com/serokell/tezos-packaging/releases/download/$TAG/$EXEC_NAME" -O "tezos-node" \
   && chmod +x tezos-node
-RUN ./tezos-node identity generate "0.0" --data-dir /tezos/sandbox
+#RUN ./tezos-node identity generate "0.0" --data-dir /tezos/sandbox
 COPY ./*.json /tezos/sandbox/
 ENTRYPOINT ["/tezos/tezos-node", "run", \
     "-vv", \
