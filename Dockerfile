@@ -17,4 +17,5 @@ ENTRYPOINT ["/tezos/tezos-node", "run", \
     "--data-dir=/tezos/sandbox", \
     "--synchronisation-threshold=0", \
     "--sandbox=/tezos/sandbox.json", \
-    "--allow-all-rpc=0.0.0.0"]
+    "--allow-all-rpc=0.0.0.0", \
+    "--rpc-addr=0.0.0.0:8732"]
