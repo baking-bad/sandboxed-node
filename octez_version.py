@@ -33,7 +33,8 @@ def main():
     run('git', 'checkout', '-b', f'octez-{latest_version}')
     run('git', 'add', 'octez_version')
     run('git', 'commit', '-m', f'Update Octez binaries to {latest_version}')
-
+    run('git', 'push', 'origin', f'octez-{latest_version}')
+    run('gh', 'pr', 'create', '-f', '-B', f'octez-{latest_version}', '-t', f'Update Octez binaries to {latest_version}')
 
 
 if __name__ == "__main__":
