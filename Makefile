@@ -10,5 +10,5 @@ run:
 release:
 	git tag $(TAG) -f && git push origin $(TAG) --force
 
-check:
+octez_version:
 	python3 octez_version.py
