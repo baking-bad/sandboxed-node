@@ -3,10 +3,6 @@ name: Check Octez version
 on:
   schedule:
     - cron: '0 0 * * *'
-  # REMOVE
-  push:
-    branches:
-      - aux/octez-version-checker
 
 jobs:
   octez_version:

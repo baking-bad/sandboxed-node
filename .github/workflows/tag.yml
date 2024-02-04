@@ -11,5 +11,8 @@ jobs:
     name: Force push tag of the current Octez release
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
       - name: make release
         run: make release
