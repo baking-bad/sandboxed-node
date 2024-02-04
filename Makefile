@@ -1,4 +1,4 @@
-TAG=v19.0-1
+TAG=`cat octez_version`
 
 
 build:

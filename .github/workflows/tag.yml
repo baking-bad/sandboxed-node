@@ -1,0 +1,15 @@
+name: Tag the current Octez release
+
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    name: Force push tag of the current Octez release
+    runs-on: ubuntu-latest
+    steps:
+      - name: make release
+        run: make release
