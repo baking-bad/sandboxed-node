@@ -1,4 +1,4 @@
-TAG=v19.0-1
+TAG=`cat octez_version`
 
 
 build:
@@ -9,3 +9,6 @@ run:
 
 release:
 	git tag $(TAG) -f && git push origin $(TAG) --force
+
+octez_version:
+	python3 octez_version.py

@@ -1,0 +1,19 @@
+name: Check Octez version
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  # REMOVE
+  push:
+    branches:
+      - aux/octez-version-checker
+
+jobs:
+  octez_version:
+    name: Check the latest Octez release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install python-requests
+        run: sudo apt-get install python3-requests
+      - name: make octez_version
+        run: make octez_version
