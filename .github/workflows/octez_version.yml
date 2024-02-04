@@ -25,7 +25,6 @@ jobs:
         if: success()
         run: |
           export OCTEZ_VERSION=$(cat octez_version)
-          cd ../interface
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git checkout -b octez-$OCTEZ_VERSION
