@@ -17,5 +17,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Install python-requests
         run: sudo apt-get install python3-requests
-      - name: make octez_version
-        run: make octez_version
+      - name: python3 octez_version.py
+        run: python3 octez_version.py
