@@ -23,12 +23,15 @@ jobs:
 
       - name: Create a PR for new version
         if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export OCTEZ_VERSION=$(cat octez_version)
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git branch -D octez-$OCTEZ_VERSION
           git checkout -b octez-$OCTEZ_VERSION
           git add .
           git commit -m "Update Octez binaries to $OCTEZ_VERSION"
-          git push origin octez-$OCTEZ_VERSION
+          git push --force origin octez-$OCTEZ_VERSION
           gh pr create --title "Update Octez binaries to $OCTEZ_VERSION" --body "This PR updates the Octez binaries to the latest version $OCTEZ_VERSION"  --base master --head octez-$OCTEZ_VERSION
