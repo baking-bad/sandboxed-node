@@ -18,7 +18,7 @@ jobs:
         run: python3 octez_version.py
 
       - name: Create a PR for new version
-        if: success()
+        if: failure()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

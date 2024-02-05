@@ -20,17 +20,15 @@ def main():
 
     if current_version == latest_version:
         print('Octez version is up to date.')
-        exit(1)
+        exit(0)
 
     if not env.get("GITHUB_ACTIONS"):
         print("This script is intended to be run in a GitHub Action.")
-        exit(2)
+        exit(0)
 
     print('Octez version has changed. Updating...')
     Path('octez_version').write_text(latest_version)
-
-    run('make', 'build')
-    exit(0)
+    exit(1)
 
 if __name__ == "__main__":
     main()
