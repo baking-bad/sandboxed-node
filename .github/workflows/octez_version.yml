@@ -2,7 +2,7 @@ name: Check Octez version
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '* * * * *'
 
 jobs:
   octez_version:
