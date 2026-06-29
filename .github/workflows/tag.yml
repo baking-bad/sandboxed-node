@@ -1,26 +1,51 @@
 name: Tag the current Octez release
 
-
 on:
   push:
     branches:
       - 'master'
 
+# contents:write lets the tag job push the tag.
+# The publish workflows are invoked directly (jobs.<id>.uses) in this same run, so we
+# do NOT rely on the tag-push emitting a `push: tags` event — a tag pushed by
+# GITHUB_TOKEN never emits one (GitHub's recursion-prevention), which is exactly the
+# bug that left the image unpublished after every protocol bump.
 permissions:
   contents: write
-  actions: write
 
 jobs:
-  build:
-    name: Force push tag of the current Octez release
+  tag:
+    name: Tag the current Octez release
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.release.outputs.version }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: make release
-        run: make release
+        id: release
+        run: |
+          make release
+          echo "version=$(cat octez_version)" >> "$GITHUB_OUTPUT"
 
-      - uses: rhosys/github-action-rebuild-pull-requests@v1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+  dockerhub:
+    name: Publish on Docker Hub
+    needs: tag
+    uses: ./.github/workflows/dockerhub.yml
+    with:
+      version: ${{ needs.tag.outputs.version }}
+    secrets: inherit
+
+  ghcr:
+    name: Publish on GHCR
+    needs: tag
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/ghcr.yml
+    with:
+      version: ${{ needs.tag.outputs.version }}
+    secrets: inherit
